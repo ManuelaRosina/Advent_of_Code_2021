@@ -26,13 +26,13 @@ with open("input_day5.txt") as f:
     for line in f:
         lines.append([[int(n) for n in x.split(',')] for x in line.rstrip().split(' -> ')])
         
-print(np.array(lines).max(axis=(0,1)))
+#print(np.array(lines).shape)
 
 fiels_shape = np.array(lines).max(axis=(0,1))
 field = np.zeros([fiels_shape[0]+1,fiels_shape[1]+1])
 #print(field)
 
-"""horiz, vert = horiz_vert(filter_lines(lines))
+horiz, vert = horiz_vert(filter_lines(lines))
 
 for line in horiz:
     y = line[1][1]
@@ -49,8 +49,9 @@ for line in vert:
         field[y][x] += 1
 #print(field)
 
-print("part 1: ", len(np.where(field > 1)[0]))"""
+print("part 1: ", len(np.where(field > 1)[0]))
 
+field = np.zeros([fiels_shape[0]+1,fiels_shape[1]+1])
 for line in lines:
     x_range = adap_range(line[0][0], line[1][0])
     y_range = adap_range(line[0][1], line[1][1])

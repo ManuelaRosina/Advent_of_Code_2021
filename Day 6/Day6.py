@@ -10,7 +10,7 @@ print(fish)
 #print(fish.sum(axis=0))
 #print(np.subtract(fish,day_vec))
 solution_vecs = []
-"""for day in range(34):
+"""for day in range(80):
     
     fish = fish - 1
     nr_new_fish = len(np.where(fish == -1)[0])

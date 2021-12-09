@@ -24,35 +24,76 @@ Given a list of instructions of the form 'forward/up/down X' where X is a number
 
 ### My solution:
 
-## Day 3:
+## Day 3 Binary Diagnostic:
 ### Part 1 Problem:
-### My solution:
-### Part 2 Problem:
-### My solution:
+We have a list of binary numbers. We need to find the values called gamma rate and epsilon rate. The bits in the gamma rate are defined as the most common bit over the whole input list at that position. The epsilon rate is the least common bit (the inverse of gamma).
 
-## Day 4:
-### Part 1 Problem:
 ### My solution:
-### Part 2 Problem:
-### My solution:
+I load the input in a 2D array, which I can then sum over the first axis. This gives us the number of times the 1 bit is used in each position. If this number is larger or equal than half the length of the list the gamma bit is 1 else 0. We can do the same but reverse 1 and 0 for the epsilon value.
 
-## Day 5:
-### Part 1 Problem:
-### My solution:
 ### Part 2 Problem:
-### My solution:
+Now we need to find the values called oxygen generator rating and CO2 scrubber rating. To find those we need to go from the first to the last position and determine the most comman (and least common) bit and keep only the numbers with that bit. Then repeat the process with the resulting sublist and the second bit and so on. We stop when the list contains only one element.
 
-## Day 6:
-### Part 1 Problem:
 ### My solution:
-### Part 2 Problem:
-### My solution:
+The problem describtion descirbes already part of my solution. I wrote separate functions to compute the most fequent and least fequent bits for a given list. As well as a function that reduces a list and keeps only the numbers that have a given bit value at a given position. I combine those elements in a loop that stops when we only have one element left.
 
-## Day 7:
+## Day 4: Giant Squid
 ### Part 1 Problem:
+We play bingo. We get a list of drawn numbers and bingo boards (5x5 numbers). We need to determine which bingo board wins first given the list of drawn numbers.
+
 ### My solution:
+I store the boards in a 3D numpy array. I loop througth the drawn numbers and mark all occurences on the board with -1. Then to check if a board has one I sum over the second and third axis and check if the vector contains the value -5. The index of this value correspons to the index of the winning board.
+
 ### Part 2 Problem:
+Now we need to determine when the last board wins.
+
 ### My solution:
+I use the same setup as for the first part but instead of stopping when the first board winns I remove it from the board list until only one is left. When that wins I stop.
+
+## Day 5 Hydrothermal Venture:
+### Part 1 Problem:
+The input is a list of lines in the form 'x1,y1 -> x2,y2' which are either horizontal, vertical or diagonal. For the first part we only consider horizontal and vertical lines (x1 = x2 or y1 = y2). We need to find the number of points where at least two lines overlap.
+
+### My solution:
+I store the input as a 3D array and filter the list for horizontal and vertical lines. Then I create a matrix of size max x and max y value of the input. Then for each line I range over the start and end value and add 1 to the point in the matrix. Finally I rearch for all values larger that 1 and compute the length of the found indices.
+
+### Part 2 Problem:
+Now we need to do the same for all lines (not only the horizontal and vertical ones). 
+
+### My solution:
+I needed to adapt the loop to distinguish between the three cases to compute a list of x and y ranges that are covered by the line. The ranges are ziped together to change the values in the filed matrix.
+
+## Day 6: Lanternfish
+
+### Part 1 Problem:
+We need to model the groth of a lanternfish population. Each fish creates a new fish every 7 days. The new created fish needs 9 days before it can reproduce for the first time. The input is a list of numbers that represent the number of days the fish has left before it reproduces. We need to find the number of fish after 80 days.
+
+### My solution:
+I store the input as a numpy array. In a loop (representing each day) I reduce all values by 1 and find the fish that have a value of -1. Those values are set back to 6 and a 8 is appended to the list (representing the new fish). After the loop we determine the length of the list.
+
+### Part 2 Problem:
+Now we need to do the same for 256 days.
+
+### My solution:
+The solution for the first part is too computationally expensive so I need to find a different approach. Instad of a list I represent the input as a 2D matrix. The first colum is the age of the fish the second is the number of fish with that value.
+
+In each day cycle (loop) I now need to substract 1 of the fist column only. When a row reaches -1 the number of fish are added to the row with age 6. and -1 is changed to 8 (for the new fish).
+
+The advantage to the fist approach is that the matrix has a fixed size all the time and we only have to find one row. In the first part we needed to find a growing number of fish with the same value.
+
+## Day 7: The Treachery of Whales
+
+### Part 1 Problem:
+We have to align a number of crab submarines horizontally. We have the horizontal position of each crap. Each step a crab takes costs one fuel. We need to find the cheapest solution.
+
+### My solution:
+As the cost of each step is constant the cheapest solution is the median. As this value per definition divides the input values in a lower and upper halve. That way the extrem values will not worsen the overall result.
+
+### Part 2 Problem:
+Now the cost of each step becomes changes. Instead, each step costs 1 fuel more than the last.
+
+### My solution:
+My intuition is that the optimal value needs to be around the mean value, as it is more optimal to have the crabs further away walk less to the alighnment value. As the mean is not an integer I test the upper and lower bound for the lowest costs.
 
 ## Day 8:
 It get's tricky. This one involved more thinking than programming.
