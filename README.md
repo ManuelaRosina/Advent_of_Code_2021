@@ -8,21 +8,26 @@ Here I'll keep trak of my basic idea of my solution.
 Given a list of numbers count how often a number is larger than the previous one.
 
 ### My solution: 
-loop through the list and compare the two numbers. Increase a counter if the second is larger than the first
+Loop through the list and compare the two numbers. Increase a counter if the second is larger than the first
 
 ### Part 2 Problem:
+Now we have to sum all numbers in a window of size 3 and count again how often that sum is larger than the previous one.
 
-### My solution:  
+### My solution:
+I adjusted the loop to stop at the last window (not the last element) and select the numbers from the list inside the window to compute the sum. The rest stays the same.
 
 ## Day 2: Dive!
 ### Part 1 Problem:
 Given a list of instructions of the form 'forward/up/down X' where X is a number find the horizontal and depth position after they are executed. 'down' increases depth, 'up' decreased depth, forward increases the horizontal position.
 
 ### My solution:
+In this case I haven't split the loading of the data and the computation in two parts but do it in one go. For each line in the input I split it on the space. The second part is converted to an int and based on the first part the operation is selected.
 
 ### Part 2 Problem:
+Now the up and down instructions decrease and increase a value called aim respectively. Forward increases the horizontal value by X and the depth by the current aim multiplied by X.
 
 ### My solution:
+I used the same code as before but adjusted the computation operations according to the problem description.
 
 ## Day 3 Binary Diagnostic:
 ### Part 1 Problem:
@@ -95,7 +100,7 @@ Now the cost of each step becomes changes. Instead, each step costs 1 fuel more 
 ### My solution:
 My intuition is that the optimal value needs to be around the mean value, as it is more optimal to have the crabs further away walk less to the alighnment value. As the mean is not an integer I test the upper and lower bound for the lowest costs.
 
-## Day 8:
+## Day 8: Seven Segment Search
 It get's tricky. This one involved more thinking than programming.
 
 ### Part 1 Problem:
