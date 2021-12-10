@@ -138,3 +138,32 @@ We need to find the size of each basin. A basin are all locations that flow down
 We now need to work the other way round. We have a list of the sink positions from the first part. From there we visit each neighbour that is larger and put the positions in a set. We stop when the height at the position is 9. In the end we have a set of all positions that are included in a basin. We can compute the legth to get the size we need.
 
 In the end we have a list of all sizes that we can sort so get the three largest ones.
+
+## Day 10: Syntax Scoring
+
+### Part 1 Problem:
+The input consists of lines with multiple open and closing brackets. There are four types of brackets: '()', '[]', '{}' and '<>'. The brackets for chunks where each chunk opend must be closed by the bracket of the same type. However, the chunk does not need to be closed directly but inside a chunck can be multiple chunks as well. The task is to find the lines that contain a chunk closed by the wrong bracket. To determine the solution each type of closing brackets is assigned a score. The solution is the sum of those scores.
+
+### My solution:
+line by line I loop through the individual brackets. If it is an open bracket it is appended to a list of open chunks. If its is a closing bracket it is checkt if the last bracket in the list of open chunks is the same type. In case it is the open bracket is removed from the list, as the chunk is closed correctly. If it is not we have found an error and the points are added to the final score, then we can move to the next line.
+
+### Part 2 Problem:
+The lines that do not contain errors are incomplete. That means that not all open chunks are closed. we need to determine in which order the chunks need to be closed. Again each bracket type is assigned a score. The score per line is determined by the following steps:
+
+1. start with 0
+2. multiply by 5
+3. add the score of the bracket
+4. repeat 2. and 3. with all brackets
+
+The final score is the median of the list of scores.
+
+### My solution:
+To get the incomplete lines I adjusted my solution for part 1 to store the indices of the error lines. I then filter those to be left with the incomplete lines only.
+I use the same loop from part 1 and removing the stop when an error is found (there should be none anymore) in the end the open chunks list contains all bakets in the order they need to be closed. So they need to be reversed and the score calculated. I do that in two separate functions. In the end I output the median of all scores.
+
+## Day 
+
+### Part 1 Problem:
+### My solution:
+### Part 2 Problem:
+### My solution:
