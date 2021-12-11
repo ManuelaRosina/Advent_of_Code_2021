@@ -161,7 +161,30 @@ The final score is the median of the list of scores.
 To get the incomplete lines I adjusted my solution for part 1 to store the indices of the error lines. I then filter those to be left with the incomplete lines only.
 I use the same loop from part 1 and removing the stop when an error is found (there should be none anymore) in the end the open chunks list contains all bakets in the order they need to be closed. So they need to be reversed and the score calculated. I do that in two separate functions. In the end I output the median of all scores.
 
-## Day 
+## Day 11: Dumbo Octopus
+
+### Part 1 Problem:
+We get a 10x10 matrix with integer values between 1 and 8 representing the energy level of the dumbo octopus sitting at those positions. If a octopus reaches an energy level greater than 9 it flashes. When a flash happens the neighbouring octopuses energy level is increased by one and the energy of the flashing octopus is back at 0. We have to count the number of flashes after 100 steps.
+The description gives the following instructions how to model the behaviour:
+
+You can model the energy levels and flashes of light in steps. During a single step, the following occurs:
+
+- First, the energy level of each octopus increases by 1.
+- Then, any octopus with an energy level greater than 9 flashes. This increases the energy level of all adjacent octopuses by 1, including octopuses that are diagonally adjacent. If this causes an octopus to have an energy level greater than 9, it also flashes. This process continues as long as new octopuses keep having their energy level increased beyond 9. (An octopus can only flash at most once per step.)
+- Finally, any octopus that flashed during this step has its energy level set to 0, as it used all of its energy to flash.
+
+### My solution:
+I made three functions: one for the search of the positions where octupuses have reached an energy level greater than 9 (flash_positions). One for the adjustement of the neighbour energy level (flash) and one to reset the energy level given a list of positions (reset\_ernergy).
+
+In the main loop I add 1 to every element of the matrix and find the positions of flashing octopuses. the length of the position list is added to the number of flashes. The while the list of positions is filled I adjust the energy values accourding to the flashing and search for the next flashing octopuses. All positions of the flashed octopusses are stored to reset the energy to 0 at the end of the while loop.
+
+### Part 2 Problem:
+Now we need to find the number of steps it takes until all octopuses flash at the same time.
+
+### My solution:
+I just needed to make two adjustements to my code from part one: I switched the for loop to a while loop and use the function numpy.any to test if the matrix contains only zeros. I still need a counter to count how often the loop is executed (number of steps) and return this number instead of the flash number.
+
+## Day 12:
 
 ### Part 1 Problem:
 ### My solution:
