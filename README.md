@@ -184,7 +184,21 @@ Now we need to find the number of steps it takes until all octopuses flash at th
 ### My solution:
 I just needed to make two adjustements to my code from part one: I switched the for loop to a while loop and use the function numpy.any to test if the matrix contains only zeros. I still need a counter to count how often the loop is executed (number of steps) and return this number instead of the flash number.
 
-## Day 12:
+## Day 12: Passage Pathing
+
+### Part 1 Problem:
+We are given a list of connections. Each row shows the connection between two caves. Together this forms a cave system. caves with lowercase letter names represent small caves and caves with uppercase names are large caves. Large caves can be visited infinite times, small caves only once. We need to find the number of legal path from the start cave to the end cave.
+
+### My solution:
+I adjusted a DFS algorithm to append the nodes to the visited set only under conditions. Large caves are never added (so can be visited multiple times) and small caves are only added if it is not the end node. When we reach the end node 1 is returned (as we found a legal path). Otherwise we expand all children and add the returning value. Finally the number of path is returned
+
+### Part 2 Problem:
+Now one small cave can be visited twice.
+
+### My solution:
+Now small caves are appended to visited if they already appear in the path and the bool twice is False (to prevent multiple small caves). If we are not allowed to visit the small cave because there is already a doubble one we return the number of path.
+
+## Day 13: Transparent Origami
 
 ### Part 1 Problem:
 ### My solution:
