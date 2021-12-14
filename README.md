@@ -201,6 +201,16 @@ Now small caves are appended to visited if they already appear in the path and t
 ## Day 13: Transparent Origami
 
 ### Part 1 Problem:
+Once again we are provided with a list of coordinates, that represent dots on a transparent paper. The input gives also a list of folding instructions. Folding can either be done up or to the left. The number provided together with the folding instruction gives the position where the fold is.
+Because the paper is transparent dots are visible through the upper paper.
+
+We are asked to performe the first folding opperation and count the number of visible dots (two overlapping dots are counted as one).
+
 ### My solution:
+using a numpy array I mark the dot positions with 1. For the folding operation I write one function for the up fold and one for the left fold. The only differnce is the axis where the splitting occurs. I split the paper matrix in two parts using slice notation. One part is fliped along the axis and both parts are added together. Lastly all numbers greater than 1 will be set to 1 again.
+
 ### Part 2 Problem:
+Now we are asked to performe all operations. If performed correctly an eight letter uppercase code should appear.
+
 ### My solution:
+I add a function fold that chooses the right fold function based on the instruction (x or y fold). Then I loop over all functions to get the final paper. Because the code was not readable in the numpy matrix with zeros and ones I added a pretty print function to print a string instead.
