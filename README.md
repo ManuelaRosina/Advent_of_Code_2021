@@ -214,3 +214,17 @@ Now we are asked to performe all operations. If performed correctly an eight let
 
 ### My solution:
 I add a function fold that chooses the right fold function based on the instruction (x or y fold). Then I loop over all functions to get the final paper. Because the code was not readable in the numpy matrix with zeros and ones I added a pretty print function to print a string instead.
+
+## Day 14: Extended Polymerization
+
+### Part 1 Problem:
+The input is a starting string together with a list of rules. Each rules gives a letter pair and a letter that is inserted between the letters. Each step all pairs are extended according to the rules at the same time. Pairs are overlapping. We need to find the letter with the highest count and that with the lowest count after 10 iterations and substract those frequencies.
+
+### My solution:
+I decided on a DFS approach where the starting string is divided in pairs. For each pair the fitting rule is applied and the function is called on the two resulting pairs.
+
+### Part 2 Problem:
+Now we need to do the same for 40 iterations.
+
+### My solution:
+As the recursive approach takes to long and the string grows exponentially we need a different solution. As applying each rule results in two new pairs we can represent the rules as a directed graph and thus as a matrix. This represents the change after one step. Multiplying this matrix with itself results in the change after two steps and so on. So we can calculate the matrix to the power of steps to have the final configuration after 40 steps. To get the counts of the starting string we can transform the strating string in a vector and multiply it with the matrix to get the frequencies of each pair. To count the letter frequencies we count the first letter of each pair and ad one for the last letter of the starting string.
